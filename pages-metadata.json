@@ -1,0 +1,20 @@
+{
+  "repo": "HumayunShariarHimu.github.io",
+  "title": "Humayun Shariar Himu",
+  "description": "Community-contributed Bangla programming courses and software development articles for learners, maintained as an open-source web portal.",
+  "topics": [
+    "bangla-programming",
+    "bangla-tutorials",
+    "programming-courses",
+    "software-development",
+    "open-source-education",
+    "beginner-programmers",
+    "programming-blog",
+    "github-pages",
+    "html",
+    "javascript"
+  ],
+  "site_url": "https://humayunshariarhimu.github.io/",
+  "base_path": "",
+  "author": "Humayun Shariar Himu"
+}
