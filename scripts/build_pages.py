@@ -132,21 +132,21 @@ def parse_nav(root: Path, md_map: dict[Path, Path], base_path: str) -> str:
     return '<nav class="toc" aria-label="Table of contents"><h2>Contents</h2><ul>'+''.join(lis)+'</ul></nav>' if lis else ''
 
 
-def template(title: str, description: str, site_title: str, canonical: str, base_path: str, topics: list[str], body: str, nav: str, is_home: bool=False) -> str:
+def template(title: str, description: str, site_title: str, canonical: str, base_path: str, topics: list[str], body: str, nav: str, image_url: str, is_home: bool=False) -> str:
     keywords=', '.join(topics[:8])
     css=(base_path.rstrip('/')+'/assets/site.css') if base_path else '/assets/site.css'
     ogtype='website' if is_home else 'article'
     return f'''<!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<html lang="bn"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{html.escape(title)} | {html.escape(site_title)}</title>
 <meta name="description" content="{html.escape(description,quote=True)}"><meta name="keywords" content="{html.escape(keywords,quote=True)}">
-<link rel="canonical" href="{html.escape(canonical,quote=True)}"><meta property="og:type" content="{ogtype}"><meta property="og:title" content="{html.escape(title,quote=True)}"><meta property="og:description" content="{html.escape(description,quote=True)}"><meta property="og:url" content="{html.escape(canonical,quote=True)}"><meta property="og:site_name" content="{html.escape(site_title,quote=True)}">
-<meta name="twitter:card" content="summary"><meta name="twitter:title" content="{html.escape(title,quote=True)}"><meta name="twitter:description" content="{html.escape(description,quote=True)}">
+<link rel="canonical" href="{html.escape(canonical,quote=True)}"><meta property="og:type" content="{ogtype}"><meta property="og:title" content="{html.escape(title,quote=True)}"><meta property="og:description" content="{html.escape(description,quote=True)}"><meta property="og:url" content="{html.escape(canonical,quote=True)}"><meta property="og:site_name" content="{html.escape(site_title,quote=True)}"><meta property="og:image" content="{html.escape(image_url,quote=True)}">
+<meta name="twitter:card" content="summary"><meta name="twitter:title" content="{html.escape(title,quote=True)}"><meta name="twitter:description" content="{html.escape(description,quote=True)}"><meta name="twitter:image" content="{html.escape(image_url,quote=True)}">
 <link rel="stylesheet" href="{html.escape(css,quote=True)}"></head><body><header class="site-header"><a class="brand" href="{html.escape((base_path or '')+'/',quote=True)}">{html.escape(site_title)}</a><a class="source" href="https://github.com/HumayunShariarHimu">GitHub profile</a></header>
 <div class="shell">{nav}<main><article>{body}</article><footer>Maintained by Humayun Shariar Himu · <a href="https://github.com/HumayunShariarHimu">GitHub</a></footer></main></div></body></html>'''
 
 
-def inject_metadata(raw: str, title: str, description: str, canonical: str, site_title: str, topics: list[str]) -> str:
+def inject_metadata(raw: str, title: str, description: str, canonical: str, site_title: str, topics: list[str], image_url: str) -> str:
     keywords=', '.join(topics[:8])
     final_title = title if site_title.casefold() in title.casefold() else title + ' | ' + site_title
     title_tag=f'<title>{html.escape(final_title)}</title>'
@@ -163,9 +163,11 @@ def inject_metadata(raw: str, title: str, description: str, canonical: str, site
         (r'<meta\b(?=[^>]*\bproperty=["\']og:description["\'])[^>]*>',f'<meta property="og:description" content="{html.escape(description,quote=True)}">'),
         (r'<meta\b(?=[^>]*\bproperty=["\']og:url["\'])[^>]*>',f'<meta property="og:url" content="{html.escape(canonical,quote=True)}">'),
         (r'<meta\b(?=[^>]*\bproperty=["\']og:site_name["\'])[^>]*>',f'<meta property="og:site_name" content="{html.escape(site_title,quote=True)}">'),
+        (r'<meta\b(?=[^>]*\bproperty=["\']og:image["\'])[^>]*>',f'<meta property="og:image" content="{html.escape(image_url,quote=True)}">'),
         (r'<meta\b(?=[^>]*\bname=["\']twitter:card["\'])[^>]*>','<meta name="twitter:card" content="summary">'),
         (r'<meta\b(?=[^>]*\bname=["\']twitter:title["\'])[^>]*>',f'<meta name="twitter:title" content="{html.escape(title,quote=True)}">'),
         (r'<meta\b(?=[^>]*\bname=["\']twitter:description["\'])[^>]*>',f'<meta name="twitter:description" content="{html.escape(description,quote=True)}">'),
+        (r'<meta\b(?=[^>]*\bname=["\']twitter:image["\'])[^>]*>',f'<meta name="twitter:image" content="{html.escape(image_url,quote=True)}">'),
     ]
     missing=[]
     for pattern,tag in entries:
@@ -184,6 +186,7 @@ def main():
     meta=json.loads((root/'pages-metadata.json').read_text(encoding='utf-8'))
     repo=meta['repo']; site_title=meta['title']; site_url=meta['site_url'].rstrip('/')+'/'
     base_path=meta.get('base_path','').rstrip('/'); description=meta['description']; topics=meta['topics']
+    image_url=meta.get('image',site_url+'img/codeguru.png')
     if out.exists(): shutil.rmtree(out)
     out.mkdir(parents=True)
     md_sources=[]
@@ -191,7 +194,9 @@ def main():
         if not p.is_file(): continue
         rel=p.relative_to(root)
         if any(part in SKIP_DIRS for part in rel.parts): continue
-        if p.suffix.lower() in MD_EXTS: md_sources.append(p.resolve())
+        if p.suffix.lower() in MD_EXTS:
+            if p.resolve() == (root/'README.md').resolve() and (root/'index.html').exists(): continue
+            md_sources.append(p.resolve())
     md_sources.sort()
     root_index_md=root/'index.md'; root_readme=root/'README.md'
     if (root/'index.html').exists(): home_source=None
@@ -217,7 +222,7 @@ def main():
             page_rel=rel.as_posix()
             canonical=site_url+(page_rel if page_rel!='index.html' else '')
             title=page_title(p,raw,site_title)
-            target.write_text(inject_metadata(raw,title,description,canonical,site_title,topics),encoding='utf-8')
+            target.write_text(inject_metadata(raw,title,description,canonical,site_title,topics,image_url),encoding='utf-8')
         else:
             shutil.copy2(p,target)
 
@@ -236,18 +241,21 @@ def main():
         canonical=site_url+(rel_out.as_posix() if rel_out.as_posix()!='index.html' else '')
         # Existing authored HTML index remains the homepage and is not overwritten by Markdown.
         if rel_out.as_posix()=='index.html' and (root/'index.html').exists():
-            target=out/'README.html'
-        target.write_text(template(title,page_description,site_title,canonical,base_path,topics,body,nav,rel_out.as_posix()=='index.html'),encoding='utf-8')
+            continue
+        target.write_text(template(title,page_description,site_title,canonical,base_path,topics,body,nav,image_url,rel_out.as_posix()=='index.html'),encoding='utf-8')
 
     (out/'assets').mkdir(exist_ok=True)
     css='''*{box-sizing:border-box}body{margin:0;color:#172033;background:#f7f8fb;font:16px/1.65 system-ui,-apple-system,"Segoe UI",sans-serif}a{color:#135b8e;text-decoration:none}a:hover{text-decoration:underline}.site-header{display:flex;justify-content:space-between;align-items:center;padding:1rem max(1.2rem,calc((100vw - 1200px)/2));background:#13243a;color:#fff}.site-header a{color:#fff}.brand{font-weight:700;font-size:1.12rem}.shell{max-width:1200px;margin:2rem auto;padding:0 1.2rem;display:grid;grid-template-columns:minmax(210px,270px) minmax(0,1fr);gap:2rem}.toc{align-self:start;position:sticky;top:1rem;max-height:calc(100vh - 2rem);overflow:auto;background:#fff;border:1px solid #e2e7ef;border-radius:12px;padding:1rem}.toc h2{font-size:1rem;margin:.2rem 0 .7rem}.toc ul{list-style:none;padding:0;margin:0}.toc li{margin:.25rem 0 .25rem calc(var(--depth)*.7rem);font-size:.92rem}main{min-width:0;background:#fff;border:1px solid #e2e7ef;border-radius:12px;padding:clamp(1.2rem,3vw,2.6rem);box-shadow:0 8px 30px #18243a0b}article{overflow-wrap:anywhere}h1,h2,h3{line-height:1.25;color:#13243a}h1{font-size:clamp(1.8rem,4vw,2.5rem)}pre{overflow:auto;padding:1rem;border-radius:8px;background:#101a2a;color:#eaf1fa}code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace}img{max-width:100%;height:auto}table{border-collapse:collapse;display:block;overflow:auto}th,td{padding:.55rem .75rem;border:1px solid #d9e0ea}blockquote{border-left:4px solid #79a8ce;margin-left:0;padding:.2rem 1rem;color:#536276}footer{margin-top:2rem;padding-top:1rem;border-top:1px solid #e3e8ef;color:#657287;font-size:.9rem}@media(max-width:760px){.shell{display:block;margin:1rem auto}.toc{position:static;max-height:none;margin-bottom:1rem}.site-header{padding:1rem}}
 '''
     (out/'assets/site.css').write_text(css,encoding='utf-8')
     # Ensure a helpful 404 page for unknown routes.
-    (out/'404.html').write_text(f'<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="robots" content="noindex"><title>Not found | {html.escape(site_title)}</title></head><body><main><h1>Page not found</h1><p><a href="{html.escape(base_path or "/",quote=True)}/">Return to {html.escape(site_title)}</a></p></main></body></html>',encoding='utf-8')
+    home_path=base_path.rstrip('/')+'/' if base_path else '/'
+    (out/'404.html').write_text(f'<!doctype html><html lang="bn"><head><meta charset="utf-8"><meta name="robots" content="noindex"><title>পাতাটি পাওয়া যায়নি | {html.escape(site_title)}</title></head><body><main><h1>পাতাটি খুঁজে পাওয়া যায়নি</h1><p><a href="{html.escape(home_path,quote=True)}">{html.escape(site_title)}-র মূল পাতায় ফিরুন</a></p></main></body></html>',encoding='utf-8')
     pages=[]
     for p in out.rglob('*.html'):
         if p.name=='404.html': continue
+        raw=p.read_text(encoding='utf-8',errors='replace')
+        if re.search(r'<meta\b(?=[^>]*\bname=["\']robots["\'])[^>]*\bcontent=["\'][^"\']*noindex',raw,re.I): continue
         rel=p.relative_to(out).as_posix()
         url=site_url+(rel if rel!='index.html' else '')
         pages.append(url)
