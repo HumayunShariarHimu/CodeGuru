@@ -33,6 +33,9 @@ def plain_text(markdown_text: str) -> str:
 
 
 def page_title(source: Path, text: str, site_title: str) -> str:
+    html_title = re.search(r'<title\b[^>]*>(.*?)</title>', text, re.I | re.S)
+    if html_title:
+        return plain_text(html_title.group(1))[:100]
     for line in FRONT_MATTER.sub('', text).splitlines():
         match = re.match(r'^\s*#\s+(.+?)\s*#*\s*$', line)
         if match:
@@ -240,7 +243,9 @@ def main():
     (out/'404.html').write_text(f'<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="robots" content="noindex"><title>Not found | {html.escape(site_title)}</title></head><body><main><h1>Page not found</h1><p><a href="{html.escape(base_path or "/",quote=True)}/">Return to {html.escape(site_title)}</a></p></main></body></html>',encoding='utf-8')
     pages=[]
     for p in out.rglob('*.html'):
-        if p.name=='404.html': continue
+        page_html=p.read_text(encoding='utf-8',errors='replace')
+        robots_meta=re.search(r'<meta\b(?=[^>]*\bname=["\']robots["\'])[^>]*>',page_html,re.I)
+        if p.name=='404.html' or (robots_meta and re.search(r'\bnoindex\b',robots_meta.group(0),re.I)): continue
         rel=p.relative_to(out).as_posix()
         url=site_url+(rel if rel!='index.html' else '')
         pages.append(url)

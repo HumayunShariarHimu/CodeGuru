@@ -1,11 +1,15 @@
 {
-    "devDependencies": {
-        "gulp": "^3.9.1",
-        "gulp-connect": "^5.0.0"
-    },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/HumayunShariarHimu/HumayunShariarHimu.github.io.git"
-    },
-    "author": "Humayun Shariar Himu"
+  "name": "codeguru-hub",
+  "version": "1.0.0",
+  "private": true,
+  "description": "CodeGuru directory of Bangla-first programming courses and developer guides.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/HumayunShariarHimu/CodeGuru.git"
+  },
+  "author": "Humayun Shariar Himu",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-connect": "^5.0.0"
+  }
 }

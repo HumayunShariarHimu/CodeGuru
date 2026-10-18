@@ -1,20 +1,18 @@
 {
-  "repo": "HumayunShariarHimu.github.io",
-  "title": "Humayun Shariar Himu",
-  "description": "Community-contributed Bangla programming courses and software development articles for learners, maintained as an open-source web portal.",
+  "repo": "CodeGuru",
+  "title": "CodeGuru",
+  "description": "Explore Bangla-first programming books and developer guides. Find live course sites, English project summaries, and source repositories in one searchable directory.",
   "topics": [
+    "codeguru",
     "bangla-programming",
     "bangla-tutorials",
     "programming-courses",
     "software-development",
     "open-source-education",
-    "beginner-programmers",
-    "programming-blog",
     "github-pages",
-    "html",
-    "javascript"
+    "programming-books"
   ],
-  "site_url": "https://humayunshariarhimu.github.io/",
-  "base_path": "",
+  "site_url": "https://humayunshariarhimu.github.io/CodeGuru/",
+  "base_path": "/CodeGuru",
   "author": "Humayun Shariar Himu"
 }
