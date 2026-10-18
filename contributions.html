@@ -1,27 +1,109 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Find the right CodeGuru GitHub project to suggest a correction, report an issue, or improve a Bangla programming guide.">
-  <meta name="robots" content="index,follow">
-  <link rel="canonical" href="https://humayunshariarhimu.github.io/CodeGuru/contributions.html">
-  <title>Contribute to CodeGuru</title>
-  <link rel="stylesheet" href="css/codeguru.css">
-</head>
-<body>
-  <a class="skip-link" href="#main">Skip to content</a>
-  <header class="topbar">
-    <a class="brand" href="./"><span class="brand-mark" aria-hidden="true">&lt;/&gt;</span><span>CodeGuru</span></a>
-    <nav class="topnav" aria-label="Main navigation"><a href="./#courses">Explore courses</a><a href="https://github.com/HumayunShariarHimu?tab=repositories" target="_blank" rel="noopener noreferrer">GitHub repositories ↗</a></nav>
-  </header>
-  <main id="main" class="catalog">
-    <p class="eyebrow eyebrow-dark">PROJECT HELP</p>
-    <h1>Improve a learning guide</h1>
-    <p class="section-copy">Each CodeGuru course is maintained in its own public repository. Open the matching project to review its source, see its current issues, or suggest a focused correction.</p>
-    <p><a class="button button-primary" href="./#courses">Choose a project</a> <a class="button button-quiet" href="https://github.com/HumayunShariarHimu?tab=repositories" target="_blank" rel="noopener noreferrer">Browse repositories ↗</a></p>
-    <p class="section-copy">Before reusing course material, check the license and attribution included in that specific repository.</p>
-  </main>
-  <footer class="site-footer"><a class="brand footer-brand" href="./"><span class="brand-mark" aria-hidden="true">&lt;/&gt;</span><span>CodeGuru</span></a><p>Maintained by <a href="https://github.com/HumayunShariarHimu">Humayun Shariar Himu</a>.</p></footer>
-</body>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CodeGuru Contributions</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" rel="stylesheet">
+  </head>
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    
+    ul li {
+      list-style: none;
+      float: left;
+    }
+    
+    li div.contributions {
+      width: 50px;
+      height: 50px;
+      float: left;
+      background-color: #EBEFF0;
+      font-weight: bold;
+      text-align: center;
+      vertical-align: middle;
+      line-height: 50px;  
+    }
+    
+    div.identity {
+      float: left;
+      background-color: #ECF0EB;
+      height: 50px;
+      padding-right: 5px;
+      margin-right: 10px;
+      margin-bottom: 10px;
+    }
+    
+    div.identity-left{
+      float: left;
+    }
+    
+    div.identity-right{
+      float: right;
+      margin-left: 5px;
+      margin-top: 5px;
+    }
+    
+    span {
+      display: block;
+    }
+    
+    span.name {
+      font-size: 1.3em;
+    }  
+  </style> 
+  <body>
+    <div id="container">
+      <ul></ul>
+      <div style="clear: both;"></div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script>
+      $(document).ready(function() {
+        var owner = "HumayunShariarHimu";
+        var ownerName = "Humayun Shariar Himu";
+        var repoNames = new Set(["CodeGuru", "machine-learning", "git", "sql", "shell", "qt", "scala", "python-programming", "java", "ruby", "laravel", "php", "minima", "javascript", "ios", "go", "data-science", "deep-learning", "django", "clojure", "bangla-programming-resources", "blog", "arduino", "c"]);
+
+        function getUrlParameter(name) {
+          var params = new URLSearchParams(window.location.search);
+          return params.get(name);
+        }
+
+        function renderMaintainer(contributions) {
+          var countText = (typeof contributions === "number") ? String(contributions) : "—";
+          var $item = $("<li>").attr("id", "humayun-shariar-himu");
+          var $count = $("<div>").addClass("contributions").attr("aria-label", "Contribution count").text(countText);
+          var $identity = $("<div>").addClass("identity");
+          var $left = $("<div>").addClass("identity-left");
+          var $right = $("<div>").addClass("identity-right");
+          var $image = $("<img>").attr({src: "https://github.com/HumayunShariarHimu.png", alt: ownerName, height: 50, width: 50});
+          var $name = $("<span>").addClass("name").append($("<a>").attr({href: "https://github.com/HumayunShariarHimu", rel: "noopener"}).text(ownerName));
+          var $role = $("<span>").addClass("web").text("CodeGuru maintainer");
+          $left.append($image);
+          $right.append($name, $role);
+          $identity.append($left, $right);
+          $item.append($count, $identity);
+          $("#container ul").empty().append($item);
+        }
+
+        var requested = getUrlParameter("repo") || "CodeGuru";
+        var repo = repoNames.has(requested) ? requested : "CodeGuru";
+        $.ajax({
+          url: "https://api.github.com/repos/" + owner + "/" + encodeURIComponent(repo) + "/contributors?per_page=100",
+          type: "GET",
+          cache: false,
+          success: function(response) {
+            var match = (response || []).find(function(item) {
+              return (item.login || "").toLowerCase() === owner.toLowerCase();
+            });
+            renderMaintainer(match && typeof match.contributions === "number" ? match.contributions : null);
+          },
+          error: function() { renderMaintainer(null); }
+        });
+      });
+    </script>
+  </body>
 </html>

@@ -33,9 +33,12 @@ def plain_text(markdown_text: str) -> str:
 
 
 def page_title(source: Path, text: str, site_title: str) -> str:
-    html_title = re.search(r'<title\b[^>]*>(.*?)</title>', text, re.I | re.S)
-    if html_title:
-        return plain_text(html_title.group(1))[:100]
+    if source.suffix.lower() in {'.html', '.htm'}:
+        authored = re.search(r'<title\b[^>]*>(.*?)</title>', text, re.I | re.S)
+        if authored:
+            title = plain_text(authored.group(1))
+            if title:
+                return title[:100]
     for line in FRONT_MATTER.sub('', text).splitlines():
         match = re.match(r'^\s*#\s+(.+?)\s*#*\s*$', line)
         if match:
@@ -145,7 +148,8 @@ def template(title: str, description: str, site_title: str, canonical: str, base
 
 def inject_metadata(raw: str, title: str, description: str, canonical: str, site_title: str, topics: list[str]) -> str:
     keywords=', '.join(topics[:8])
-    title_tag=f'<title>{html.escape(title)} | {html.escape(site_title)}</title>'
+    final_title = title if site_title.casefold() in title.casefold() else title + ' | ' + site_title
+    title_tag=f'<title>{html.escape(final_title)}</title>'
     if re.search(r'<title>.*?</title>',raw,re.I|re.S):
         raw=re.sub(r'<title>.*?</title>',lambda _:title_tag,raw,count=1,flags=re.I|re.S)
     else:
@@ -243,9 +247,7 @@ def main():
     (out/'404.html').write_text(f'<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="robots" content="noindex"><title>Not found | {html.escape(site_title)}</title></head><body><main><h1>Page not found</h1><p><a href="{html.escape(base_path or "/",quote=True)}/">Return to {html.escape(site_title)}</a></p></main></body></html>',encoding='utf-8')
     pages=[]
     for p in out.rglob('*.html'):
-        page_html=p.read_text(encoding='utf-8',errors='replace')
-        robots_meta=re.search(r'<meta\b(?=[^>]*\bname=["\']robots["\'])[^>]*>',page_html,re.I)
-        if p.name=='404.html' or (robots_meta and re.search(r'\bnoindex\b',robots_meta.group(0),re.I)): continue
+        if p.name=='404.html': continue
         rel=p.relative_to(out).as_posix()
         url=site_url+(rel if rel!='index.html' else '')
         pages.append(url)

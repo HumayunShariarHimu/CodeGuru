@@ -1,3 +1,0 @@
-User-agent: *
-Allow: /
-Sitemap: https://humayunshariarhimu.github.io/CodeGuru/sitemap.xml
