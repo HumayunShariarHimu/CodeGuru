@@ -1,0 +1,20 @@
+{
+  "repo": "qt",
+  "title": "Introduction",
+  "description": "Bengali-language learning book covering Qt and Qt Creator, with C++ GUI development lessons and installation guides for Linux, macOS, and Windows.",
+  "topics": [
+    "qt",
+    "qt-framework",
+    "qt-creator",
+    "cpp",
+    "gui",
+    "cross-platform",
+    "linux",
+    "macos",
+    "windows",
+    "bengali-tutorial"
+  ],
+  "site_url": "https://humayunshariarhimu.github.io/qt/",
+  "base_path": "/qt",
+  "author": "Humayun Shariar Himu"
+}

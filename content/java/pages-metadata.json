@@ -1,0 +1,20 @@
+{
+  "repo": "java",
+  "title": "পরিচিতি",
+  "description": "Bengali-language Java course book covering programming fundamentals, object-oriented concepts, practical applications, and exercises for university beginners.",
+  "topics": [
+    "java",
+    "bengali",
+    "java-tutorial",
+    "programming-book",
+    "object-oriented-programming",
+    "programming-fundamentals",
+    "beginner-programming",
+    "university-students",
+    "coding-exercises",
+    "gitbook"
+  ],
+  "site_url": "https://humayunshariarhimu.github.io/java/",
+  "base_path": "/java",
+  "author": "Humayun Shariar Himu"
+}

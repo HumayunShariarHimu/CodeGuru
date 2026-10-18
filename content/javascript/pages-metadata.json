@@ -1,0 +1,20 @@
+{
+  "repo": "javascript",
+  "title": "ভূমিকা",
+  "description": "Bengali-language, open-source JavaScript book covering core syntax, functions, arrays, objects, strings, operators, regular expressions, and ES6.",
+  "topics": [
+    "javascript",
+    "bengali",
+    "javascript-book",
+    "javascript-tutorial",
+    "es6",
+    "javascript-fundamentals",
+    "arrays",
+    "objects",
+    "functions",
+    "regular-expressions"
+  ],
+  "site_url": "https://humayunshariarhimu.github.io/javascript/",
+  "base_path": "/javascript",
+  "author": "Humayun Shariar Himu"
+}

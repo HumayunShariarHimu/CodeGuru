@@ -1,0 +1,20 @@
+{
+  "repo": "shell",
+  "title": "শুরুর কথা",
+  "description": "A Bengali-language Markdown book teaching Linux shell and scripting fundamentals, command-line use, files, processes, networking, and text tools.",
+  "topics": [
+    "bengali",
+    "linux",
+    "shell",
+    "shell-scripting",
+    "command-line",
+    "linux-tutorial",
+    "markdown",
+    "beginner-guide",
+    "linux-filesystem",
+    "regular-expressions"
+  ],
+  "site_url": "https://humayunshariarhimu.github.io/shell/",
+  "base_path": "/shell",
+  "author": "Humayun Shariar Himu"
+}

@@ -1,0 +1,20 @@
+{
+  "repo": "git",
+  "title": "শুরুর আগে",
+  "description": "A Bengali GitBook guide to Git basics, repositories, remotes, collaboration, branching, git-flow, logs, and cherry-picking.",
+  "topics": [
+    "git",
+    "version-control",
+    "gitbook",
+    "bengali",
+    "bangla",
+    "markdown",
+    "git-branching",
+    "git-flow",
+    "git-cherry-pick",
+    "git-collaboration"
+  ],
+  "site_url": "https://humayunshariarhimu.github.io/git/",
+  "base_path": "/git",
+  "author": "Humayun Shariar Himu"
+}

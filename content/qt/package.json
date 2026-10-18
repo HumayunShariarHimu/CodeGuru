@@ -1,0 +1,13 @@
+{
+    "name": "qt",
+    "version": "1.0.0",
+    "description": "",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/HumayunShariarHimu/qt.git"
+    },
+    "author": "Humayun Shariar Himu",
+    "dependencies": {
+        "gitbook-plugin-disqus": "0.0.1"
+    }
+}

@@ -1,109 +1,62 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="bn">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>CodeGuru Contributions</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" rel="stylesheet">
-  </head>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="CodeGuru এবং এর ২৩টি GitHub প্রোগ্রামিং রিসোর্সে অবদান রাখা মানুষদের তালিকা।">
+  <title>অবদানকারীরা — CodeGuru</title>
+  <link rel="icon" href="img/favicon.ico">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/album.css">
   <style>
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-    }
-    
-    ul li {
-      list-style: none;
-      float: left;
-    }
-    
-    li div.contributions {
-      width: 50px;
-      height: 50px;
-      float: left;
-      background-color: #EBEFF0;
-      font-weight: bold;
-      text-align: center;
-      vertical-align: middle;
-      line-height: 50px;  
-    }
-    
-    div.identity {
-      float: left;
-      background-color: #ECF0EB;
-      height: 50px;
-      padding-right: 5px;
-      margin-right: 10px;
-      margin-bottom: 10px;
-    }
-    
-    div.identity-left{
-      float: left;
-    }
-    
-    div.identity-right{
-      float: right;
-      margin-left: 5px;
-      margin-top: 5px;
-    }
-    
-    span {
-      display: block;
-    }
-    
-    span.name {
-      font-size: 1.3em;
-    }  
-  </style> 
-  <body>
-    <div id="container">
-      <ul></ul>
-      <div style="clear: both;"></div>
-    </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script>
-      $(document).ready(function() {
-        var owner = "HumayunShariarHimu";
-        var ownerName = "Humayun Shariar Himu";
-        var repoNames = new Set(["CodeGuru", "machine-learning", "git", "sql", "shell", "qt", "scala", "python-programming", "java", "ruby", "laravel", "php", "minima", "javascript", "ios", "go", "data-science", "deep-learning", "django", "clojure", "bangla-programming-resources", "blog", "arduino", "c"]);
-
-        function getUrlParameter(name) {
-          var params = new URLSearchParams(window.location.search);
-          return params.get(name);
-        }
-
-        function renderMaintainer(contributions) {
-          var countText = (typeof contributions === "number") ? String(contributions) : "—";
-          var $item = $("<li>").attr("id", "humayun-shariar-himu");
-          var $count = $("<div>").addClass("contributions").attr("aria-label", "Contribution count").text(countText);
-          var $identity = $("<div>").addClass("identity");
-          var $left = $("<div>").addClass("identity-left");
-          var $right = $("<div>").addClass("identity-right");
-          var $image = $("<img>").attr({src: "https://github.com/HumayunShariarHimu.png", alt: ownerName, height: 50, width: 50});
-          var $name = $("<span>").addClass("name").append($("<a>").attr({href: "https://github.com/HumayunShariarHimu", rel: "noopener"}).text(ownerName));
-          var $role = $("<span>").addClass("web").text("CodeGuru রক্ষণাবেক্ষণকারী");
-          $left.append($image);
-          $right.append($name, $role);
-          $identity.append($left, $right);
-          $item.append($count, $identity);
-          $("#container ul").empty().append($item);
-        }
-
-        var requested = getUrlParameter("repo") || "CodeGuru";
-        var repo = repoNames.has(requested) ? requested : "CodeGuru";
-        $.ajax({
-          url: "https://api.github.com/repos/" + owner + "/" + encodeURIComponent(repo) + "/contributors?per_page=100",
-          type: "GET",
-          cache: false,
-          success: function(response) {
-            var match = (response || []).find(function(item) {
-              return (item.login || "").toLowerCase() === owner.toLowerCase();
-            });
-            renderMaintainer(match && typeof match.contributions === "number" ? match.contributions : null);
-          },
-          error: function() { renderMaintainer(null); }
+    body{min-height:100vh;background:#f7f7f7}.contrib-header{background:#343a40;color:#fff;padding:13px 0}.contrib-header a{color:#fff}.contrib-header .brand{font-family:Righteous,cursive;font-size:1.35rem}.content{max-width:980px;margin:35px auto;padding:0 16px}.panel{background:#fff;border:1px solid #e4e8eb;border-radius:6px;padding:24px}.contrib-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(265px,1fr));gap:12px;padding:0;margin:20px 0 0;list-style:none}.contrib-card{display:flex;gap:12px;align-items:center;border:1px solid #e5e8eb;border-radius:6px;padding:10px;background:#fff;min-height:76px}.contrib-card img{width:52px;height:52px;border-radius:4px;object-fit:cover}.contrib-name{font-weight:600;line-height:1.25}.contrib-login,.contrib-count{font-size:.82rem;color:#6c757d}.contrib-count{margin-left:auto;white-space:nowrap}.status{min-height:24px;color:#6c757d}.loading{opacity:.6}footer{padding:22px 0;color:#6c757d;font-size:.9rem}
+  </style>
+</head>
+<body>
+  <header class="contrib-header"><div class="container d-flex justify-content-between align-items-center"><a class="brand" href="./">CodeGuru</a><a href="./">মূল পাতায় ফিরুন</a></div></header>
+  <main class="content">
+    <section class="panel">
+      <h1 class="h2">অবদানকারীদের তালিকা</h1>
+      <p class="text-muted">CodeGuru এবং এর কোর্স, বই ও রিসোর্স তৈরিতে GitHub-এ অবদান রাখা মানুষদের দেখুন। তালিকাটি GitHub-এর প্রকাশ্য contributor তথ্য থেকে লোড হয়।</p>
+      <label for="repoSelect" class="font-weight-bold">রিসোর্স বেছে নিন</label>
+      <select id="repoSelect" class="form-control" aria-label="অবদানকারীর তালিকার জন্য রিপোজিটরি বেছে নিন"></select>
+      <p id="status" class="status mt-3" role="status" aria-live="polite"></p>
+      <ul id="contributors" class="contrib-list"></ul>
+    </section>
+  </main>
+  <footer class="container text-center">CodeGuru · <a href="https://github.com/HumayunShariarHimu" target="_blank" rel="noopener">Humayun Shariar Himu-এর GitHub প্রোফাইল</a></footer>
+  <script>
+    (function(){
+      const owner='HumayunShariarHimu';
+      const repos=['CodeGuru','arduino','blog','bangla-programming-resources','clojure','django','c','deep-learning','data-science','go','ios','javascript','minima','php','laravel','sql','shell','scala','ruby','qt','python-programming','machine-learning','java','git'];
+      const select=document.getElementById('repoSelect'),list=document.getElementById('contributors'),status=document.getElementById('status');
+      const initial=new URLSearchParams(location.search).get('repo');
+      repos.forEach(repo=>{const option=document.createElement('option');option.value=repo;option.textContent=repo==='CodeGuru'?'CodeGuru সাইট':repo;select.append(option)});
+      select.value=repos.includes(initial)?initial:'CodeGuru';
+      function show(items){
+        list.replaceChildren();
+        if(!items.length){status.textContent='এই রিপোজিটরিতে এখনো কোনো প্রকাশ্য contributor তথ্য পাওয়া যায়নি।';return}
+        items.forEach(person=>{
+          const li=document.createElement('li');li.className='contrib-card';
+          const img=document.createElement('img');img.src=person.avatar_url;img.alt='';img.loading='lazy';
+          const identity=document.createElement('div');
+          const name=document.createElement('a');name.className='contrib-name d-block';name.href=person.html_url;name.target='_blank';name.rel='noopener';name.textContent=person.login;
+          const login=document.createElement('div');login.className='contrib-login';login.textContent='GitHub contributor';
+          const count=document.createElement('span');count.className='contrib-count';count.textContent=String(person.contributions)+' commits';
+          identity.append(name,login);li.append(img,identity,count);list.append(li);
         });
-      });
-    </script>
-  </body>
+      }
+      async function load(){
+        const repo=select.value;status.textContent='অবদানকারীদের তথ্য আনা হচ্ছে…';status.classList.add('loading');list.replaceChildren();
+        try{
+          const response=await fetch(`https://api.github.com/repos/${owner}/${encodeURIComponent(repo)}/contributors?per_page=100`,{headers:{Accept:'application/vnd.github+json'}});
+          if(!response.ok)throw new Error(response.status===403?'GitHub API-র সাময়িক সীমা পূর্ণ হয়েছে। কিছুক্ষণ পর আবার চেষ্টা করুন।':'এই মুহূর্তে তথ্য লোড করা যাচ্ছে না।');
+          const data=await response.json();status.classList.remove('loading');status.textContent=`${data.length} জন অবদানকারী দেখানো হচ্ছে · ${owner}/${repo}`;show(Array.isArray(data)?data:[]);
+          const url=new URL(location.href);url.searchParams.set('repo',repo);history.replaceState({},'',url);
+        }catch(error){status.classList.remove('loading');status.textContent=error.message;list.replaceChildren()}
+      }
+      select.addEventListener('change',load);load();
+    }());
+  </script>
+</body>
 </html>

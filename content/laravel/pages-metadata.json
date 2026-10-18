@@ -1,0 +1,20 @@
+{
+  "repo": "laravel",
+  "title": "ভূমিকা",
+  "description": "Bengali-language Markdown guide to Laravel and PHP, with tutorials on installation, routing, controllers, Blade views, migrations, middleware, and CRUD projects.",
+  "topics": [
+    "laravel",
+    "php",
+    "bengali",
+    "laravel-tutorial",
+    "laravel-5",
+    "markdown",
+    "blade",
+    "routing",
+    "migrations",
+    "crud"
+  ],
+  "site_url": "https://humayunshariarhimu.github.io/laravel/",
+  "base_path": "/laravel",
+  "author": "Humayun Shariar Himu"
+}

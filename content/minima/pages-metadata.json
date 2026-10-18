@@ -1,0 +1,20 @@
+{
+  "repo": "minima",
+  "title": "minima",
+  "description": "A customizable Jekyll theme for writers, with layouts for pages and posts, Sass skins, social links, and SEO metadata.",
+  "topics": [
+    "jekyll-theme",
+    "jekyll",
+    "ruby",
+    "sass",
+    "scss",
+    "static-site-generator",
+    "blogging",
+    "blog-theme",
+    "writers",
+    "minima"
+  ],
+  "site_url": "https://humayunshariarhimu.github.io/minima/",
+  "base_path": "/minima",
+  "author": "Humayun Shariar Himu"
+}

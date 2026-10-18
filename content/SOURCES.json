@@ -1,0 +1,28 @@
+{
+  "owner": "HumayunShariarHimu",
+  "repositories": {
+    "arduino": "ade88ab610249304e10b92d00f2d6020dac13ba2",
+    "blog": "be5f2f5c13579ac230ace34539dafa627a417d7f",
+    "bangla-programming-resources": "ba1aabd650eae46e3db90ba3f1db6df172c00ed4",
+    "clojure": "fb394a39dcb1de8eec1607f2ebf76a5ec7f9abcb",
+    "django": "b39601f153524398ae08f6741e92cc9721474ad5",
+    "c": "53fa44d0596a707c067c2238d1932a2f5f575bf6",
+    "deep-learning": "15771e43324d327987ec2129adf0c8eb69d1c587",
+    "data-science": "215ffd253f0bd54c458a00711a0e4a6e414e5fc0",
+    "go": "c0a8909d057bf86051047659992aba789034a940",
+    "ios": "c7a4793218cf8b755c6a28f38aba4da3435beafe",
+    "javascript": "29bbfeacceccc1b0b3c23c599a42d947d136b9d0",
+    "minima": "1d2c19e3fde2edba19b61040682ca1adc6f1cf27",
+    "php": "beae3636de58991a81f3bd1b989e229637dbaf98",
+    "laravel": "00db2058180576d0b11768f861d9cb33c11e243d",
+    "sql": "6815e738effe35aa5e5a94c8b561e7793b0062bd",
+    "shell": "a9559e8b61f4c046fdadb24eba5784b3ae3879ba",
+    "scala": "862696916574c1e5bca2a6dc7ac80ca3602444ee",
+    "ruby": "0d7b8e4c6c157c4ac8a1eef3be482cc9ac64359b",
+    "qt": "0d147673c7f67ee085c27ef6a8da7701f95ce05d",
+    "python-programming": "6b7025c641df191d526e829863a2c5bfc86f59a8",
+    "machine-learning": "d5d146e1dbd5c4c9dceee0b91461fdf8b8b02866",
+    "java": "95c3b76f113f9e2819e671fb3aba0d44eed6f616",
+    "git": "ccda16ed3e7d520e5b958bbabed81f506e8e533d"
+  }
+}

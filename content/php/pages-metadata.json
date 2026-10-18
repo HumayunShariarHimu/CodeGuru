@@ -1,0 +1,20 @@
+{
+  "repo": "php",
+  "title": "শুরুর আগে",
+  "description": "A Bengali-language PHP learning book covering language fundamentals, arrays, object-oriented programming, and common design patterns.",
+  "topics": [
+    "php",
+    "bengali",
+    "php-tutorial",
+    "php-learning",
+    "web-development",
+    "object-oriented-programming",
+    "design-patterns",
+    "php-arrays",
+    "php-fundamentals",
+    "programming-book"
+  ],
+  "site_url": "https://humayunshariarhimu.github.io/php/",
+  "base_path": "/php",
+  "author": "Humayun Shariar Himu"
+}

@@ -1,0 +1,20 @@
+{
+  "repo": "django",
+  "title": "পরিচিতি",
+  "description": "Bengali-language, open-source Markdown tutorial introducing Django and Python web development, from projects and MTV, models and ORM to views, templates, and deployment.",
+  "topics": [
+    "django-tutorial",
+    "python",
+    "bengali",
+    "web-development",
+    "web-framework",
+    "markdown",
+    "django-orm",
+    "django-admin",
+    "model-template-view",
+    "beginner-guide"
+  ],
+  "site_url": "https://humayunshariarhimu.github.io/django/",
+  "base_path": "/django",
+  "author": "Humayun Shariar Himu"
+}

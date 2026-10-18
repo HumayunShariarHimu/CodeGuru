@@ -1,0 +1,20 @@
+{
+  "repo": "bangla-programming-resources",
+  "title": "বাংলায় প্রোগ্রামিং রিসোর্সসমূহ",
+  "description": "A Bangla-language list of programming tutorials, references, and videos covering algorithms, data structures, and related topics for learners.",
+  "topics": [
+    "bangla",
+    "bengali",
+    "programming",
+    "algorithms",
+    "data-structures",
+    "competitive-programming",
+    "number-theory",
+    "programming-tutorials",
+    "resource-list",
+    "programming-learners"
+  ],
+  "site_url": "https://humayunshariarhimu.github.io/bangla-programming-resources/",
+  "base_path": "/bangla-programming-resources",
+  "author": "Humayun Shariar Himu"
+}

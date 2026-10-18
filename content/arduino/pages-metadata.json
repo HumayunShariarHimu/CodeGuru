@@ -1,0 +1,20 @@
+{
+  "repo": "arduino",
+  "title": "পরিচিতি",
+  "description": "Bengali-language Arduino learning series covering fundamentals, electronics, interfaces, serial communication, and robotics, with Markdown lessons and code examples.",
+  "topics": [
+    "arduino",
+    "arduino-tutorial",
+    "bengali",
+    "embedded-systems",
+    "microcontrollers",
+    "electronics",
+    "serial-communication",
+    "lcd-interface",
+    "robotics",
+    "markdown"
+  ],
+  "site_url": "https://humayunshariarhimu.github.io/arduino/",
+  "base_path": "/arduino",
+  "author": "Humayun Shariar Himu"
+}

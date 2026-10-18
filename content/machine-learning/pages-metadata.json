@@ -1,0 +1,20 @@
+{
+  "repo": "machine-learning",
+  "title": "ভূমিকা",
+  "description": "Bengali-language machine learning course covering data preparation, predictive modeling, and linear regression with Python, MATLAB, and JavaScript.",
+  "topics": [
+    "machine-learning",
+    "bengali",
+    "python",
+    "matlab",
+    "javascript",
+    "linear-regression",
+    "gradient-descent",
+    "supervised-learning",
+    "model-evaluation",
+    "jupyter-notebook"
+  ],
+  "site_url": "https://humayunshariarhimu.github.io/machine-learning/",
+  "base_path": "/machine-learning",
+  "author": "Humayun Shariar Himu"
+}

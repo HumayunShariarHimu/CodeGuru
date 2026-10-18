@@ -1,0 +1,20 @@
+{
+  "repo": "ios",
+  "title": "ভূমিকা",
+  "description": "A Bengali-language, open-source Markdown course covering Objective-C, Swift, and iOS app and game development for aspiring developers.",
+  "topics": [
+    "ios",
+    "ios-development",
+    "swift",
+    "objective-c",
+    "app-development",
+    "ios-games",
+    "game-development",
+    "bengali",
+    "bangla",
+    "programming-course"
+  ],
+  "site_url": "https://humayunshariarhimu.github.io/ios/",
+  "base_path": "/ios",
+  "author": "Humayun Shariar Himu"
+}

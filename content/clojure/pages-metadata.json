@@ -1,0 +1,20 @@
+{
+  "repo": "clojure",
+  "title": "ভূমিকা",
+  "description": "A Bengali-language, open-source book introducing Clojure, Lisp, functional programming, and concurrency for programmers, with practical examples.",
+  "topics": [
+    "clojure",
+    "clojure-tutorial",
+    "bengali",
+    "lisp",
+    "functional-programming",
+    "jvm",
+    "concurrency",
+    "programming-book",
+    "gitbook",
+    "clojure-learning"
+  ],
+  "site_url": "https://humayunshariarhimu.github.io/clojure/",
+  "base_path": "/clojure",
+  "author": "Humayun Shariar Himu"
+}

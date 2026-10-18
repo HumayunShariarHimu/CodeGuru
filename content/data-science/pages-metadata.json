@@ -1,0 +1,20 @@
+{
+  "repo": "data-science",
+  "title": "ভূমিকা",
+  "description": "A Bengali-language, open-source introductory book on data science, covering statistics, data mining, and foundational concepts in Markdown.",
+  "topics": [
+    "bengali",
+    "data-science",
+    "statistics",
+    "data-mining",
+    "bayesian-statistics",
+    "descriptive-statistics",
+    "standard-deviation",
+    "gitbook",
+    "markdown",
+    "beginner-guide"
+  ],
+  "site_url": "https://humayunshariarhimu.github.io/data-science/",
+  "base_path": "/data-science",
+  "author": "Humayun Shariar Himu"
+}

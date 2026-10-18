@@ -1,0 +1,20 @@
+{
+  "repo": "go",
+  "title": "পরিচিতি",
+  "description": "A Bengali-language, open-source Markdown book introducing Go fundamentals such as variables, functions, control flow, arrays, slices, and maps.",
+  "topics": [
+    "golang",
+    "go-language",
+    "bengali",
+    "bangla",
+    "golang-tutorial",
+    "learn-go",
+    "go-programming",
+    "programming-book",
+    "markdown",
+    "beginner-programming"
+  ],
+  "site_url": "https://humayunshariarhimu.github.io/go/",
+  "base_path": "/go",
+  "author": "Humayun Shariar Himu"
+}

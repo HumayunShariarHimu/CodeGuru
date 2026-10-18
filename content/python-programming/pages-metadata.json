@@ -1,0 +1,20 @@
+{
+  "repo": "python-programming",
+  "title": "পরিচিতি",
+  "description": "A Bengali-language, Markdown-based Python programming guide covering fundamentals, functions, control flow, data structures, exceptions, file handling, regular expressions, and object-oriented programming.",
+  "topics": [
+    "python",
+    "bengali",
+    "python-tutorial",
+    "markdown",
+    "programming-book",
+    "python-for-beginners",
+    "python-basics",
+    "python-functions",
+    "python-oop",
+    "python-regular-expressions"
+  ],
+  "site_url": "https://humayunshariarhimu.github.io/python-programming/",
+  "base_path": "/python-programming",
+  "author": "Humayun Shariar Himu"
+}

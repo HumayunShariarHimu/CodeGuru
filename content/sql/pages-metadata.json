@@ -1,0 +1,20 @@
+{
+  "repo": "sql",
+  "title": "কোর্স পরিচিতি",
+  "description": "Bengali-language, Markdown-based GitBook covering MySQL and SQL fundamentals, joins, functions, database design, and query optimization.",
+  "topics": [
+    "bengali",
+    "mysql",
+    "sql-tutorial",
+    "database-tutorial",
+    "gitbook",
+    "markdown",
+    "sql-joins",
+    "sql-optimization",
+    "sql-functions",
+    "database-design"
+  ],
+  "site_url": "https://humayunshariarhimu.github.io/sql/",
+  "base_path": "/sql",
+  "author": "Humayun Shariar Himu"
+}

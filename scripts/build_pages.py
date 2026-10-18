@@ -14,7 +14,7 @@ from urllib.parse import quote, unquote, urlsplit, urlunsplit
 
 import markdown
 
-SKIP_DIRS = {'.git', '.github', 'node_modules', '_site', '.bundle', '.sass-cache'}
+SKIP_DIRS = {'.git', '.github', 'node_modules', '_site', '.bundle', '.sass-cache', 'content'}
 ASSET_EXTS = {'.png','.jpg','.jpeg','.gif','.svg','.webp','.ico','.css','.js','.mjs','.pdf','.woff','.woff2','.ttf','.otf','.mp4','.webm','.mp3','.wav'}
 MD_EXTS = {'.md','.markdown'}
 FRONT_MATTER = re.compile(r'\A---\s*\r?\n.*?\r?\n---\s*\r?\n', re.S)

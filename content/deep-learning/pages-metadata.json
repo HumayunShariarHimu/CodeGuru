@@ -1,0 +1,20 @@
+{
+  "repo": "deep-learning",
+  "title": "পরিচিতি",
+  "description": "Bengali-language introductory deep learning course covering neural networks, CNNs, and hands-on Python and TensorFlow image-classification lessons.",
+  "topics": [
+    "deep-learning",
+    "bengali",
+    "neural-networks",
+    "convolutional-neural-networks",
+    "tensorflow",
+    "python",
+    "image-classification",
+    "machine-learning",
+    "deep-learning-tutorial",
+    "markdown"
+  ],
+  "site_url": "https://humayunshariarhimu.github.io/deep-learning/",
+  "base_path": "/deep-learning",
+  "author": "Humayun Shariar Himu"
+}

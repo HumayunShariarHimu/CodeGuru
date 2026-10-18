@@ -1,0 +1,20 @@
+{
+  "repo": "c",
+  "title": "পরিচিতি",
+  "description": "A Bengali-language, open-source Markdown book introducing C programming, from fundamentals and control flow to arrays, pointers, functions, structures, and file I/O.",
+  "topics": [
+    "c",
+    "c-programming",
+    "bengali",
+    "bangla",
+    "programming-tutorial",
+    "c-tutorial",
+    "markdown-book",
+    "gitbook",
+    "beginner-programming",
+    "computer-science-education"
+  ],
+  "site_url": "https://humayunshariarhimu.github.io/c/",
+  "base_path": "/c",
+  "author": "Humayun Shariar Himu"
+}

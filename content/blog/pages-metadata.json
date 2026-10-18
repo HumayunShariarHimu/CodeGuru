@@ -1,0 +1,20 @@
+{
+  "repo": "blog",
+  "title": "Blog",
+  "description": "A Bengali-language blog with Markdown pages and a story post, configured as a Jekyll static site.",
+  "topics": [
+    "bengali-language",
+    "bangla",
+    "bengali",
+    "bangla-blog",
+    "bengali-blog",
+    "jekyll",
+    "markdown",
+    "static-site",
+    "blog",
+    "bangla-writing"
+  ],
+  "site_url": "https://humayunshariarhimu.github.io/blog/",
+  "base_path": "/blog",
+  "author": "Humayun Shariar Himu"
+}

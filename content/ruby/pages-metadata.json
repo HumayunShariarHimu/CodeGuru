@@ -1,0 +1,20 @@
+{
+  "repo": "ruby",
+  "title": "ভূমিকা",
+  "description": "Bengali-language open-source guide to Ruby programming, with beginner-oriented lessons on installation and syntax in Markdown.",
+  "topics": [
+    "ruby",
+    "bengali",
+    "ruby-tutorial",
+    "programming-guide",
+    "beginner-programming",
+    "markdown",
+    "gitbook",
+    "ruby-syntax",
+    "ruby-installation",
+    "open-source-book"
+  ],
+  "site_url": "https://humayunshariarhimu.github.io/ruby/",
+  "base_path": "/ruby",
+  "author": "Humayun Shariar Himu"
+}
