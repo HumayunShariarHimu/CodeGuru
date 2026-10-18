@@ -1,6 +1,11 @@
 {
-  "devDependencies": {
-    "gulp": "^3.9.1",
-    "gulp-connect": "^5.0.0"
-  }
+    "devDependencies": {
+        "gulp": "^3.9.1",
+        "gulp-connect": "^5.0.0"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/HumayunShariarHimu/HumayunShariarHimu.github.io.git"
+    },
+    "author": "Humayun Shariar Himu"
 }
