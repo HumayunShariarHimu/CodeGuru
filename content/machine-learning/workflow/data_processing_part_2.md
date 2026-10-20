@@ -162,7 +162,7 @@ print data_frame.isnull().values.any()
 
 #### Correlation Heatmap
 
-আমরা দেখেছি, দুইটা ভ্যারিয়েবলের মধ্যে [কো-রিলেশন ক্যালকুলেট করে কীভাবে](data_processing_part_2.md#pearson)
+আমরা দেখেছি, দুইটা ভ্যারিয়েবলের মধ্যে [কো-রিলেশন ক্যালকুলেট করে কীভাবে](../working_with_data/data_processing_part_2.md#pearson)
 
 আপনি নিজেই নিজেকে প্রশ্ন করে দেখুন, কতগুলা ভ্যালু \(ফ্লোটিং পয়েন্ট\) কে তুলনা করা সহজ নাকি রং তুলনা করা সহজ? অবশ্যই রং তুলনা করা সহজ,
 
@@ -374,4 +374,3 @@ print ("Number of False Cases: {0} ({1:2.2f}%)".format(num_false, (num_true / (n
 * True/False রেশিও চেক করলাম
 
 So far so good, পরবর্তী পর্বে আশা করি আমরা অ্যালগরিদম অ্যাপ্লাই করে প্রেডিক্ট করা শুরু করে দিব।
-
