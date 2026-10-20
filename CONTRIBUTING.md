@@ -10,6 +10,19 @@ CodeGuru-তে বাংলা ভাষায় প্রোগ্রাম�
 4. তথ্য, code example, command এবং link যাচাই করুন। বিদ্যমান formatting ও বাংলা লেখার ধরন বজায় রাখুন; প্রয়োজনে পরিবর্তিত page বা build স্থানীয়ভাবে পরীক্ষা করুন।
 5. review feedback পেলে একই branch-এ সংশোধন যোগ করুন। Maintainer-এর review ও merge-এর আগে PR-কে সম্পন্ন ধরে নেবেন না।
 
+## পরিবর্তন স্থানীয়ভাবে যাচাই করবেন যেভাবে
+
+মূল CodeGuru সাইট বা কোর্স পেজের build পরিবর্তন করলে repository-র root directory থেকে নিচের ধাপগুলো চালান। Python 3 লাগবে; প্রথমবার build dependency ইনস্টল করুন:
+
+```bash
+python3 -m pip install -r requirements-pages.txt
+python3 scripts/build_pages.py --output _site
+python3 scripts/build_course_sites.py --content content --output _site/courses
+python3 scripts/build_sitemap.py
+```
+
+শেষ ধাপে `_site/sitemap.xml` এবং `_site/robots.txt` তৈরি হয়। Build সফল হলে `_site/index.html` ও `_site/courses/python-programming/index.html` খুলে পরিবর্তিত পেজটি দেখুন। `_site/` generated output—এটি commit করবেন না। শুধু কোর্সের source content বদলালে সংশ্লিষ্ট কোর্সের নিজস্ব repository-র contribution নির্দেশনা অনুসরণ করুন।
+
 ## ভালো অবদানের মানদণ্ড
 
 - পরিবর্তনটি নির্দিষ্ট পাঠক-সমস্যা সমাধান করে এবং প্রকল্পের শেখার উদ্দেশ্যের সঙ্গে সম্পর্কিত।
