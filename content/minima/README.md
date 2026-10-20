@@ -209,7 +209,7 @@ minima:
 You can *add* custom metadata to the `<head />` of your layouts by creating a file `_includes/custom-head.html` in your source directory. For example, to add favicons:
 
 1. Head over to [https://realfavicongenerator.net/](https://realfavicongenerator.net/) to add your own favicons.
-2. [Customize](#customization) default `_includes/custom-head.html` in your source directory and insert the given code snippet.
+2. Customize the default `_includes/custom-head.html` in your source directory and insert the given code snippet.
 
 
 ### Enabling comments (via Disqus)

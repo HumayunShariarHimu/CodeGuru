@@ -153,6 +153,22 @@ class HtmlLinks(HTMLParser):
     def handle_comment(self, data): self.out.append("<!--" + data + "-->")
 
 
+def page_for_directory(candidate: Path, mapping: dict[Path, Path]) -> Path | None:
+    """Resolve a directory URL to its authored landing page when one exists."""
+    for name in ("README.md", "index.md", "SUMMARY.md"):
+        source_page = (candidate / name).resolve()
+        if source_page in mapping:
+            return mapping[source_page]
+    return None
+
+
+def mapped_url(destination: Path, output: Path, parts) -> str:
+    rel = posixpath.relpath(destination.as_posix(), output.parent.as_posix() or ".")
+    if not rel.startswith(".") and "/" not in rel:
+        rel = "./" + rel
+    return urlunsplit(("", "", quote(rel, safe="/._-"), parts.query, parts.fragment))
+
+
 def rewrite_link(value: str, source: Path, course_root: Path, output: Path, mapping: dict[Path, Path], base_path: str) -> str:
     parts = urlsplit(value)
     if not parts.scheme and not parts.netloc and parts.path.startswith("www."):
@@ -173,13 +189,25 @@ def rewrite_link(value: str, source: Path, course_root: Path, output: Path, mapp
         except ValueError: return value
         if candidate in mapping:
             destination = mapping[candidate]
+        elif candidate.is_dir():
+            destination = page_for_directory(candidate, mapping)
+            if not destination:
+                return value
         elif candidate.is_file():
             destination = Path(candidate.relative_to(course_root).as_posix())
         else:
             return value
-        rel = posixpath.relpath(destination.as_posix(), output.parent.as_posix() or ".")
-        if not rel.startswith(".") and "/" not in rel: rel = "./" + rel
-        return urlunsplit(("", "", quote(rel, safe="/._-"), parts.query, parts.fragment))
+        return mapped_url(destination, output, parts)
+    if path:
+        candidate = (source.parent / path).resolve()
+        try:
+            candidate.relative_to(course_root.resolve())
+        except ValueError:
+            return value
+        if candidate.is_dir():
+            destination = page_for_directory(candidate, mapping)
+            if destination:
+                return mapped_url(destination, output, parts)
     if not path.lower().endswith((".md", ".markdown")):
         if course_root.name == "minima" and path.lower().endswith((".html", ".htm")):
             return None
@@ -200,10 +228,7 @@ def rewrite_link(value: str, source: Path, course_root: Path, output: Path, mapp
         if candidate.is_file():
             return None
         return None
-    rel = posixpath.relpath(destination.as_posix(), output.parent.as_posix() or ".")
-    if not rel.startswith(".") and "/" not in rel:
-        rel = "./" + rel
-    return urlunsplit(("", "", quote(rel, safe="/._-"), parts.query, parts.fragment))
+    return mapped_url(destination, output, parts)
 
 
 def course_page(slug: str, book_title: str, description: str, source: Path, out_rel: Path, entries: list[tuple[int, str, Path]], prev: Path | None, nxt: Path | None, body: str, base_path: str, site_url: str) -> str:
